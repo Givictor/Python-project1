@@ -1,3 +1,7 @@
 date,amount,category,description
 19-08-2024,150,Fees,FirstMonth
 19-08-2024,200,Fees,SecondMonth
+20-08-2024,150.0,<function get_category at 0x000002A1BBD2F740>,
+20-08-2024,150.0,Income, salary
+,200.0,Income,Salary
+31-08-2024,200.0,Income,salary

@@ -1,12 +1,12 @@
 import pandas as pd
 import csv
 import datetime as datetime
-
+from data_entry import get_date,get_amount, get_category,get_description
 class CSV:
     CSV_FILE = "finance.csv"
     COLUMNS = ["date","amount","category","description"]
     
-    @classmethod
+    @classmethod 
     def initialise_csv(cls):
         try:
             pd.read_csv(cls.CSV_FILE)
@@ -27,6 +27,14 @@ class CSV:
             writer.writerow(new_entry)
         print("New Entry added Successfully")
             
-            
-CSV.initialise_csv()
-CSV.add_entry("19-08-2024",200,"Fees","SecondMonth")           
+ 
+def add():
+    CSV.initialise_csv()
+    date = get_date("Enter the date in the format DD-MM-YY : ",allow_default=True)
+    amount = get_amount()
+    category = get_category()
+    description = get_description()
+    CSV.add_entry(date,amount,category,description)
+               
+add()
+         

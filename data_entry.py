@@ -2,6 +2,8 @@ from datetime import datetime
 
 
 date_format = "%d-%m-%Y"
+CATEGORIES = {"I": "Income","E":"Expense"}
+
 def get_date(prompt, allow_default=False):
     
     
@@ -12,14 +14,29 @@ def get_date(prompt, allow_default=False):
     try:
         valid_date = datetime.strptime(date_str,date_format)
     except ValueError:
-        print("Enter the date in proper format DD-MM-YY")
+        print("Enter the date in proper format DD-MM-YY : ")
         return get_date(prompt, allow_default)
 
 def get_amount():
-    pass
+    
+    try:
+        amount = float(input("Enter the amount: "))
+        if amount <= 0:
+            return ValueError ("Amount must  greater than 0")
+        return amount
+    except ValueError as e:
+        print(e)
+        return get_amount()
 
 def get_category():
-    pass
+    
+    category = input ("Enter the category I : for Income and E for Expense : ").upper()
+    if category in CATEGORIES:
+        return CATEGORIES[category]
+    
+    print("Invalid Category")
+    return get_category()
 
 def get_description():
-    pass
+    
+    return input ("Enter the description")
